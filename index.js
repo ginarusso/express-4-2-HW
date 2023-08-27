@@ -99,12 +99,15 @@ app.delete("/fruits/:id", (req, res) => {
 
     // let filtered = fruits.filter(fruit => fruit.id !== fruitToDelete)
     let indexToDelete = fruits.findIndex(fruit => fruit.id === fruitToDelete)
+    // The indexOf() method returns -1 if the value is not found.
+    // https://www.w3schools.com/jsref/jsref_indexof.asp
+    // string.indexOf(searchvalue, start)
     if (indexToDelete !== -1) {
         fruits.splice(indexToDelete, 1)
         console.log(fruits)
         res.status(200).json(fruits)
     } else {
-        res.status(404).json({ message: "Fruit not found" })
+        res.status(404).json({ message: "Fruit was not found" })
     }
 
     // if (filtered.length === initialLength) {
