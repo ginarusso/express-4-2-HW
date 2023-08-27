@@ -97,16 +97,24 @@ app.delete("/fruits/:id", (req, res) => {
     // console.log(fruitToDelete)
     let initialLength = fruits.length
 
-    let filtered = fruits.filter(fruit => fruit.id !== fruitToDelete) 
-
-    if (filtered.length === initialLength) {
-        res.status(404).json({ message: "Fruit was not found."})
+    // let filtered = fruits.filter(fruit => fruit.id !== fruitToDelete)
+    let indexToDelete = fruits.findIndex(fruit => fruit.id === fruitToDelete)
+    if (indexToDelete !== -1) {
+        fruits.splice(indexToDelete, 1)
+        console.log(fruits)
+        res.status(200).json(fruits)
     } else {
-
-        fruits = [...filtered]
-        // console.log(fruits)
-        res.status(200).json(fruits);
+        res.status(404).json({ message: "Fruit not found" })
     }
+
+    // if (filtered.length === initialLength) {
+    //     res.status(404).json({ message: "Fruit was not found."})
+    // } else {
+
+    //     fruits = [...filtered]
+        // console.log(fruits)
+        // res.status(200).json(fruits);
+    // }
 })
 
 app.listen(port, () => {
