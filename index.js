@@ -95,10 +95,11 @@ app.delete("/fruits/:id", (req, res) => {
 
     let fruitToDelete = parseInt(req.params.id)
     // console.log(fruitToDelete)
-    let initialLength = fruits.length
+    // let initialLength = fruits.length
 
     // let filtered = fruits.filter(fruit => fruit.id !== fruitToDelete)
     let indexToDelete = fruits.findIndex(fruit => fruit.id === fruitToDelete)
+    console.log(indexToDelete)
     // The indexOf() method returns -1 if the value is not found.
     // https://www.w3schools.com/jsref/jsref_indexof.asp
     // string.indexOf(searchvalue, start)
